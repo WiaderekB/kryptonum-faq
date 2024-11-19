@@ -3,3 +3,9 @@ $neutral: #F0F7F7;
 $neutralDarker: #C6CDCC;
 $primaryGradientRight: #2DD282;
 $primaryGradientLeft: #90F4E8;
+$primaryMedium: #064040;
+$primaryDarker: #042B2B;
+
+@mixin textFontSize() {
+    font-size: clamp(0.6rem, 1vw, 1.4rem);
+}

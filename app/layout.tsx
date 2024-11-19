@@ -1,3 +1,4 @@
+import { Poppins } from "@/global/fonts";
 import "@/global/global.scss";
 import type { Metadata } from "next";
 
@@ -12,7 +13,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="pl">
-			<body>{children}</body>
+			<body className={Poppins.className}>{children}</body>
 		</html>
 	);
 }
