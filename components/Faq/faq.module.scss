@@ -9,7 +9,7 @@
 	h1 {
 		@include h1FontSize();
 		width: 100%;
-		a {
+		span {
 			background-image: $primaryGradient;
 			color: transparent;
 			background-clip: text;
@@ -42,7 +42,10 @@
 
 			.indicator {
 				height: 100%;
-				transition: 0.3s all;
+				transition: width 0.3s all;
+				@include reduce-motion {
+					transition: none;
+				}
 				background-image: $primaryGradient;
 			}
 		}
@@ -57,6 +60,9 @@
 			padding: clamp(0.175rem, 0.35vw, 0.85rem) clamp(0.3rem, 0.5vw, 1.1rem);
 			border-radius: clamp(0.6rem, 1.25vw, 2rem);
 			transition: 0.3s all;
+			@include reduce-motion {
+				transition: none;
+			}
 			color: $neutralDarker;
 
 			&::after {
@@ -75,6 +81,8 @@
 			border: none;
 			margin-top: clamp(0.75rem, 2vh, 2.5rem);
 			color: $neutral;
+			border-radius: 0.5rem;
+			cursor: pointer;
 			background-color: transparent;
 			@include textFontSize;
 
@@ -82,6 +90,11 @@
 				margin-left: clamp(0.3rem, 1.5vw, 0.5rem);
 				height: clamp(0.75rem, 2vw, 2.25rem);
 				vertical-align: middle;
+			}
+
+			&:focus-visible {
+				outline: 2px solid $primaryGradientRight;
+				outline-offset: 0.3rem;
 			}
 		}
 	}

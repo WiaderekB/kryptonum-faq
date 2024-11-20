@@ -18,3 +18,9 @@ $primaryGradient: linear-gradient(90deg, $primaryGradientLeft 0px, $primaryGradi
 @mixin h2FontSize() {
 	font-size: clamp(0.875rem, 1.3vw, 1.5rem);
 }
+
+@mixin reduce-motion {
+	@media (prefers-reduced-motion: reduce) {
+		@content;
+	}
+}
