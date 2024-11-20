@@ -3,6 +3,7 @@
 import styles from "@/components/Faq/faq.module.scss";
 import content from "@/components/Faq/faqContent";
 import { useState } from "react";
+import FaqQuestion from "./Question/question";
 
 function FaqSection() {
 	const [visibleElementsCount, setVisibleElementsCount] = useState<number>(10);
@@ -18,6 +19,10 @@ function FaqSection() {
 				</svg>
 				<a>Pytaj</a>, jakby jutra miało nie być. Odpowiemy!
 			</h1>
+
+			<div className={styles.questionContainer}>
+				<FaqQuestion index={0} questionData={content[0]} />
+			</div>
 
 			<nav className={styles.nav}>
 				<div className={styles.counter} style={{ left: `${(visibleElementsCount / content.length) * 100}%` }}>
