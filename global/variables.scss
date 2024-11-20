@@ -8,7 +8,7 @@ $primaryDarker: #042b2b;
 $primaryGradient: linear-gradient(90deg, $primaryGradientLeft 0px, $primaryGradientRight 100%);
 
 @mixin textFontSize() {
-	font-size: clamp(0.7rem, 1.1vw, 1.2rem);
+	font-size: clamp(0.7rem, 1.1vw, 1.1rem);
 }
 
 @mixin h1FontSize() {
