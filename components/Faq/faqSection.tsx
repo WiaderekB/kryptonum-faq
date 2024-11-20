@@ -21,7 +21,9 @@ function FaqSection() {
 			</h1>
 
 			<div className={styles.questionContainer}>
-				<FaqQuestion index={0} questionData={content[0]} />
+				{content.slice(0, visibleElementsCount).map((question, index) => (
+					<FaqQuestion key={index} index={index} questionData={question} />
+				))}
 			</div>
 
 			<nav className={styles.nav}>

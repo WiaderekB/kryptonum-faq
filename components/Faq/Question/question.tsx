@@ -7,7 +7,7 @@ function FaqQuestion(props: { index: number; questionData: FaqQuestionDataType }
 	const [open, setOpen] = useState(false);
 	return (
 		<div className={`${styles.question} ${open ? styles.open : ""}`}>
-			<p className={styles.index}>0{props.index + 1}</p>
+			<p className={styles.index}>{props.index + 1 < 10 ? `0${props.index + 1}` : props.index + 1}</p>
 
 			<div className={styles.content}>
 				<div className={styles.title}>

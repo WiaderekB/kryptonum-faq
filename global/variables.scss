@@ -1,20 +1,20 @@
 $black: #000;
-$neutral: #F0F7F7;
-$neutralDarker: #C6CDCC;
-$primaryGradientRight: #2DD282;
-$primaryGradientLeft: #90F4E8;
+$neutral: #f0f7f7;
+$neutralDarker: #c6cdcc;
+$primaryGradientRight: #2dd282;
+$primaryGradientLeft: #90f4e8;
 $primaryMedium: #064040;
-$primaryDarker: #042B2B;
+$primaryDarker: #042b2b;
 $primaryGradient: linear-gradient(90deg, $primaryGradientLeft 0px, $primaryGradientRight 100%);
 
 @mixin textFontSize() {
-    font-size: clamp(0.6rem, 1vw, 1.3rem);
-    }
-    
-    @mixin h1FontSize() {
-        font-size: clamp(1.3rem, 2.25vw, 2.5rem);
-    }
-    
-    @mixin h2FontSize() {
-        font-size: clamp(0.75rem, 1.3vw, 2rem);
+	font-size: clamp(0.7rem, 1.1vw, 1.2rem);
+}
+
+@mixin h1FontSize() {
+	font-size: clamp(1.5rem, 2vw, 2.25rem);
+}
+
+@mixin h2FontSize() {
+	font-size: clamp(0.875rem, 1.3vw, 1.5rem);
 }
