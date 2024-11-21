@@ -1,162 +1,170 @@
 .question {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	border-bottom: 0.75px solid;
-	border-color: $neutralDarker;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-bottom: 0.75px solid;
+  border-color: $neutralDarker;
 
-	position: relative;
+  position: relative;
 
-	&::after {
-		content: "";
-		position: absolute;
-		bottom: -0.75px;
-		left: 0;
-		width: 0;
-		height: 0.75px;
-		background: $primaryGradient;
-		transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-		@include reduce-motion {
-			transition: none;
-		}
-	}
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -0.75px;
+    left: 0;
+    width: 0;
+    height: 0.75px;
+    background: $primaryGradient;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
-	&::details-content {
-		display: block;
-		block-size: 0;
-		overflow: hidden;
-		transition-property: block-size, content-visibility;
-		transition-duration: 0.4s;
-		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-		transition-behavior: allow-discrete;
-	}
+    @include reduce-motion {
+      transition: none;
+    }
+  }
 
-	&[open] {
-		&::after {
-			width: 100%;
-		}
+  &::details-content {
+    display: block;
+    block-size: 0;
+    overflow: hidden;
+    transition-property: block-size, content-visibility;
+    transition-duration: 0.4s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-behavior: allow-discrete;
+  }
 
-		&::details-content {
-			block-size: auto; // Fallback
-			block-size: calc-size(auto, size);
-		}
+  &[open] {
+    &::after {
+      width: 100%;
+    }
 
-		.title .button {
-			.vertical {
-				transform: rotate(450deg);
-			}
-			.horizontal {
-				transform: rotate(360deg);
-			}
-		}
+    &::details-content {
+      block-size: auto; // Fallback
+      block-size: calc-size(auto, size);
+    }
 
-		.content {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
+    .title .button {
+      .vertical {
+        transform: rotate(450deg);
+      }
 
-	summary {
-		display: flex;
-		flex-direction: row;
-		width: 100%;
-		cursor: pointer;
-		list-style: none;
-		align-items: center;
-		&::-webkit-details-marker {
-			display: none;
-		}
+      .horizontal {
+        transform: rotate(360deg);
+      }
+    }
 
-		.index {
-			@include h2FontSize();
-			padding: clamp(1rem, 3vw, 2.5rem) clamp(0.5rem, 2vw, 1.75rem);
-			margin: 0;
-			color: $neutralDarker;
-		}
-	}
+    .content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-	.title {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		flex: 1;
-		padding: clamp(1rem, 3vw, 2.5rem) clamp(0.5rem, 2vw, 1.75rem) clamp(1rem, 3vw, 2.5rem) 0;
+  summary {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    cursor: pointer;
+    list-style: none;
+    align-items: center;
 
-		h2 {
-			margin: 0;
-			@include h2FontSize();
-			padding-right: 1rem;
-		}
+    &::-webkit-details-marker {
+      display: none;
+    }
 
-		.button {
-			position: relative;
-			display: block;
-			aspect-ratio: 1;
-			border-radius: 50%;
-			outline: none;
-			border: none;
-			background-color: transparent;
-			width: clamp(1.2rem, 2vw, 2.1rem);
-			height: clamp(1.2rem, 2vw, 2.1rem);
-			padding: 1.5px;
-			background: $primaryGradient;
-			transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-			@include reduce-motion {
-				transition: none;
-			}
+    .index {
+      @include h2FontSize();
+      padding: clamp(1rem, 3vw, 2.5rem) clamp(0.5rem, 2vw, 1.75rem);
+      margin: 0;
+      color: $neutralDarker;
+    }
+  }
 
-			&::after {
-				content: "";
-				position: absolute;
-				inset: 1.5px;
-				border-radius: 50%;
-				background: $black;
-				display: block;
-			}
-			.horizontal,
-			.vertical {
-				position: absolute;
-				background: $primaryGradient;
-				border-radius: 1px;
-				z-index: 2;
-				transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-				@include reduce-motion {
-					transition: none;
-				}
-			}
-			.horizontal {
-				width: 50%;
-				height: 1px;
-				left: 25%;
-				top: calc(50% - 0.5px);
-			}
-			.vertical {
-				height: 50%;
-				width: 1px;
-				top: 25%;
-				left: calc(50% - 0.5px);
-			}
+  .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    padding: clamp(1rem, 3vw, 2.5rem) clamp(0.5rem, 2vw, 1.75rem) clamp(1rem, 3vw, 2.5rem) 0;
 
-			// Add focus styles
-			&:focus-visible {
-				outline: 2px solid $primaryGradientRight;
-				outline-offset: 0.3rem;
-			}
-		}
-	}
+    h2 {
+      margin: 0;
+      @include h2FontSize();
+      padding-right: 1rem;
+    }
 
-	.content {
-		width: 100%;
-		padding: 0 clamp(0.5rem, 2vw, 1.75rem) clamp(0.75rem, 2vw, 1.25rem);
-		margin-left: auto;
-		opacity: 0;
-		transform: translateY(-8px);
-		transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    .button {
+      position: relative;
+      display: block;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      outline: none;
+      border: none;
+      background-color: transparent;
+      width: clamp(1.2rem, 2vw, 2.1rem);
+      height: clamp(1.2rem, 2vw, 2.1rem);
+      padding: 1.5px;
+      background: $primaryGradient;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
-		p {
-			padding-right: clamp(0.2rem, 1.7vw, 1.75rem);
-			margin: 1rem 0;
-		}
-	}
+      @include reduce-motion {
+        transition: none;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 1.5px;
+        border-radius: 50%;
+        background: $black;
+        display: block;
+      }
+
+      .horizontal,
+      .vertical {
+        position: absolute;
+        background: $primaryGradient;
+        border-radius: 1px;
+        z-index: 2;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+        @include reduce-motion {
+          transition: none;
+        }
+      }
+
+      .horizontal {
+        width: 50%;
+        height: 1px;
+        left: 25%;
+        top: calc(50% - 0.5px);
+      }
+
+      .vertical {
+        height: 50%;
+        width: 1px;
+        top: 25%;
+        left: calc(50% - 0.5px);
+      }
+
+      // Add focus styles
+      &:focus-visible {
+        outline: 2px solid $primaryGradientRight;
+        outline-offset: 0.3rem;
+      }
+    }
+  }
+
+  .content {
+    width: 100%;
+    padding: 0 clamp(0.5rem, 2vw, 1.75rem) clamp(0.75rem, 2vw, 1.25rem);
+    margin-left: auto;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    p {
+      padding-right: clamp(0.2rem, 1.7vw, 1.75rem);
+      margin: 1rem 0;
+    }
+  }
 }
