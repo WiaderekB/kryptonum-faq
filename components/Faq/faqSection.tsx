@@ -21,48 +21,46 @@ function FaqSection() {
       </h1>
 
       <div className={styles.questionContainer} role="feed" aria-label="FAQ questions and answers">
-        {content.slice(0, visibleElementsCount).map((question, index) => (
-          <FaqQuestion key={index} index={index} questionData={question} />
+        {content.map((question, index) => (
+          <FaqQuestion key={index} index={index} questionData={question} isVisible={index < visibleElementsCount} />
         ))}
       </div>
 
-      <nav className={styles.nav} aria-label="FAQ navigation">
-        <div
-          className={styles.counter}
-          style={{ left: `${(visibleElementsCount / content.length) * 100}%` }}
-          aria-label={`Showing ${visibleElementsCount} of ${content.length} questions`}
-        >
-          {visibleElementsCount} / {content.length}
-        </div>
+      {visibleElementsCount < content.length && (
+        <nav className={styles.nav} aria-label="FAQ navigation">
+          <div
+            className={styles.counter}
+            style={{ left: `${(visibleElementsCount / content.length) * 100}%` }}
+            aria-label={`Showing ${visibleElementsCount} of ${content.length} questions`}
+          >
+            {visibleElementsCount} / {content.length}
+          </div>
 
-        <div
-          className={styles.bar}
-          role="progressbar"
-          aria-valuemin={0}
-          aria-valuemax={content.length}
-          aria-valuenow={visibleElementsCount}
-          aria-label="Questions loaded progress"
-        >
-          <div className={styles.indicator} style={{ width: `${(visibleElementsCount / content.length) * 100}%` }}></div>
-        </div>
+          <div
+            className={styles.bar}
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={content.length}
+            aria-valuenow={visibleElementsCount}
+            aria-label="Questions loaded progress"
+          >
+            <div className={styles.indicator} style={{ width: `${(visibleElementsCount / content.length) * 100}%` }}></div>
+          </div>
 
-        <button
-          onClick={() => setVisibleElementsCount((old) => Math.min(old + 10, content.length))}
-          aria-label="Load more questions"
-          disabled={visibleElementsCount >= content.length}
-        >
-          Wczytaj więcej
-          <svg width="10" height="13" viewBox="0 0 10 13" aria-hidden="true" role="presentation">
-            <path d="M5 1.15039V11.8171m0 0 4-4.00004M5 11.8171 1 7.81706" stroke="url(#a)" strokeLinecap="round" strokeLinejoin="round" />
-            <defs>
-              <linearGradient id="a" x1="8.85" y1="1.15039" x2=".50948" y2="1.54883" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#2DD282" />
-                <stop offset="1" stopColor="#90F4E8" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </button>
-      </nav>
+          <button onClick={() => setVisibleElementsCount((old) => Math.min(old + 10, content.length))} aria-label="Load more questions">
+            Wczytaj więcej
+            <svg width="10" height="13" viewBox="0 0 10 13" aria-hidden="true" role="presentation">
+              <path d="M5 1.15039V11.8171m0 0 4-4.00004M5 11.8171 1 7.81706" stroke="url(#a)" strokeLinecap="round" strokeLinejoin="round" />
+              <defs>
+                <linearGradient id="a" x1="8.85" y1="1.15039" x2=".50948" y2="1.54883" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#2DD282" />
+                  <stop offset="1" stopColor="#90F4E8" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </button>
+        </nav>
+      )}
     </section>
   );
 }
