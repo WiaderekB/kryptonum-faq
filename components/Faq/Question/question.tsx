@@ -1,33 +1,29 @@
 "use client";
-import { useState } from "react";
 import styles from "./question.module.scss";
 import { FaqQuestionDataType } from "./question.types";
 
-function FaqQuestion(props: { index: number; questionData: FaqQuestionDataType }) {
-	const [open, setOpen] = useState(false);
-	const questionId = `faq-question-${props.index}`;
-	const answerId = `faq-answer-${props.index}`;
+function FaqQuestion({ index, questionData }: { index: number; questionData: FaqQuestionDataType }) {
+	const questionId = `faq-question-${index}`;
+	const answerId = `faq-answer-${index}`;
 
 	return (
-		<article className={`${styles.question} ${open ? styles.open : ""}`}>
-			<p className={styles.index} aria-hidden="true">
-				{props.index + 1 < 10 ? `0${props.index + 1}` : props.index + 1}
-			</p>
-
-			<div className={styles.content}>
+		<details className={styles.question}>
+			<summary>
+				<p className={styles.index} aria-hidden="true">
+					{index + 1 < 10 ? `0${index + 1}` : index + 1}
+				</p>
 				<div className={styles.title}>
-					<h2 id={questionId}>{props.questionData.question}</h2>
-					<button aria-expanded={open} aria-controls={answerId} onClick={() => setOpen((previous) => !previous)} aria-label={open ? "Close answer" : "Open answer"}>
+					<h2 id={questionId}>{questionData.question}</h2>
+					<div className={styles.button} aria-hidden="true">
 						<span className={styles.horizontal} aria-hidden="true"></span>
 						<span className={styles.vertical} aria-hidden="true"></span>
-					</button>
+					</div>
 				</div>
-
-				<div className={styles.answerWrapper} id={answerId} role="region" aria-labelledby={questionId}>
-					<p>{props.questionData.answer}</p>
-				</div>
+			</summary>
+			<div className={styles.content} id={answerId} role="region" aria-labelledby={questionId}>
+				<p>{questionData.answer}</p>
 			</div>
-		</article>
+		</details>
 	);
 }
 
