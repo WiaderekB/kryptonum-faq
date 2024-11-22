@@ -50,7 +50,7 @@
       white-space: nowrap;
       padding: clamp(0.175rem, 0.35vw, 0.85rem) clamp(0.3rem, 0.5vw, 1.1rem);
       border-radius: clamp(0.6rem, 1.25vw, 2rem);
-      transition: 0.3s transform;
+      transition: transform 0.3s;
       @include smallTextFontSize;
       @include reduce-motion {
         transition: none;
@@ -78,7 +78,7 @@
 
       .indicator {
         height: 100%;
-        transition: width 0.3s all;
+        transition: width 0.3s;
         @include reduce-motion {
           transition: none;
         }

@@ -9,15 +9,12 @@ function FaqQuestion({ index, questionData, isVisible }: { index: number; questi
   return (
     <details className={`${styles.question} ${isVisible ? styles.visible : styles.hidden}`} style={{ display: isVisible ? "" : "none" }}>
       <summary>
-        <p className={styles.index} aria-hidden="true">
-          {index + 1 < 10 ? `0${index + 1}` : index + 1}
-        </p>
-        <div className={styles.title}>
-          <h2 id={questionId}>{questionData.question}</h2>
-          <div className={styles.button} aria-hidden="true">
-            <span className={styles.horizontal} aria-hidden="true"></span>
-            <span className={styles.vertical} aria-hidden="true"></span>
-          </div>
+        <h2 data-index={index + 1 < 10 ? `0${index + 1}` : index + 1} id={questionId}>
+          {questionData.question}
+        </h2>
+        <div className={styles.button} aria-hidden="true">
+          <span className={styles.horizontal} aria-hidden="true"></span>
+          <span className={styles.vertical} aria-hidden="true"></span>
         </div>
       </summary>
 
