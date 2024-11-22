@@ -7,20 +7,27 @@ $primaryMedium: #064040;
 $primaryDarker: #042b2b;
 $primaryGradient: linear-gradient(90deg, $primaryGradientLeft 0px, $primaryGradientRight 100%);
 
-@mixin textFontSize() {
-	font-size: clamp(0.7rem, 1.1vw, 1.1rem);
-}
-
 @mixin h1FontSize() {
-	font-size: clamp(1.5rem, 2vw, 2.25rem);
+  font-size: 1.5rem;
 }
 
 @mixin h2FontSize() {
-	font-size: clamp(0.875rem, 1.3vw, 1.5rem);
+  font-size: 1.125rem;
+  @media (min-width: 1024px) {
+    font-size: 1rem;
+  }
+}
+
+@mixin textFontSize() {
+  font-size: 0.875rem;
+}
+
+@mixin smallTextFontSize() {
+  font-size: 0.75rem;
 }
 
 @mixin reduce-motion {
-	@media (prefers-reduced-motion: reduce) {
-		@content;
-	}
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
 }

@@ -1,101 +1,109 @@
 .Faq {
-	padding: clamp(1rem, 5vw, 5rem);
-	color: $neutral;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	@include textFontSize;
+  padding: clamp(2.5rem, calc(5vw / 0.48), 4rem) clamp(1rem, calc(2.5vw / 0.48), 2.5rem);
+  color: $neutral;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, calc(2vw / 0.48), 2rem);
+  @include textFontSize;
 
-	h1 {
-		@include h1FontSize();
-		width: 100%;
-		span {
-			background-image: $primaryGradient;
-			color: transparent;
-			background-clip: text;
-		}
-		svg {
-			margin-right: clamp(0.2rem, 1.5vw, 0.5rem);
-			vertical-align: middle;
-			height: clamp(1rem, 2vw, 1.5rem);
-		}
-		margin-bottom: 2rem;
-	}
+  h1 {
+    @include h1FontSize();
+    width: 100%;
+    margin: 0;
+    span {
+      background-image: $primaryGradient;
+      color: transparent;
+      background-clip: text;
+    }
+    svg {
+      margin-right: clamp(0.2rem, 1.5vw, 0.5rem);
+      vertical-align: middle;
+      height: clamp(1rem, 2vw, 1.5rem);
+    }
+  }
 
-	.questionContainer {
-		width: 100%;
-		position: relative;
-		height: 100%;
-	}
+  .questionContainer {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    @media (max-width: 1024px) {
+      gap: 1rem;
+    }
+    height: 100%;
+  }
 
-	.nav {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		padding-top: clamp(3rem, 12vh, 10rem);
+  .nav {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-		.bar {
-			height: 2px;
-			width: clamp(10rem, 25vw, 15rem);
-			background-color: $primaryMedium;
+    .counter {
+      background-color: $primaryDarker;
+      position: absolute;
+      margin: auto;
+      transform: translateX(calc(var(--progress) * 8.125rem - 50%));
+      bottom: calc(100% - 0.75rem);
+      left: 0;
+      white-space: nowrap;
+      padding: clamp(0.175rem, 0.35vw, 0.85rem) clamp(0.3rem, 0.5vw, 1.1rem);
+      border-radius: clamp(0.6rem, 1.25vw, 2rem);
+      transition: transform 0.3s;
+      @include smallTextFontSize;
+      @include reduce-motion {
+        transition: none;
+      }
+      color: $neutralDarker;
 
-			.indicator {
-				height: 100%;
-				transition: width 0.3s all;
-				@include reduce-motion {
-					transition: none;
-				}
-				background-image: $primaryGradient;
-			}
-		}
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -0.25rem;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 0.25rem solid transparent;
+        border-right: 0.25rem solid transparent;
+        border-top: 0.25rem solid $primaryDarker;
+      }
+    }
 
-		.counter {
-			background-color: $primaryDarker;
-			position: absolute;
-			transform: translate(-50%, -200%);
-			bottom: 0;
-			left: 100%;
-			white-space: nowrap;
-			padding: clamp(0.175rem, 0.35vw, 0.85rem) clamp(0.3rem, 0.5vw, 1.1rem);
-			border-radius: clamp(0.6rem, 1.25vw, 2rem);
-			transition: 0.3s all;
-			@include reduce-motion {
-				transition: none;
-			}
-			color: $neutralDarker;
+    .bar {
+      height: 2px;
+      width: 8.125rem;
+      background-color: $primaryMedium;
+      margin-top: 1.75rem;
+      margin-bottom: 0.75rem;
 
-			&::after {
-				content: "";
-				position: absolute;
-				bottom: -0.25rem;
-				left: 50%;
-				transform: translateX(-50%);
-				border-left: 0.25rem solid transparent;
-				border-right: 0.25rem solid transparent;
-				border-top: 0.25rem solid $primaryDarker;
-			}
-		}
+      .indicator {
+        height: 100%;
+        transition: width 0.3s;
+        @include reduce-motion {
+          transition: none;
+        }
+        background-image: $primaryGradient;
+      }
+    }
 
-		button {
-			border: none;
-			margin-top: clamp(0.75rem, 2vh, 2.5rem);
-			color: $neutral;
-			border-radius: 0.5rem;
-			cursor: pointer;
-			background-color: transparent;
-			@include textFontSize;
+    button {
+      border: none;
+      color: $neutral;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      background-color: transparent;
+      @include textFontSize;
 
-			svg {
-				margin-left: clamp(0.3rem, 1.5vw, 0.5rem);
-				height: clamp(0.75rem, 2vw, 2.25rem);
-				vertical-align: middle;
-			}
+      svg {
+        margin-left: clamp(0.3rem, 1.5vw, 0.5rem);
+        height: 1rem;
+        vertical-align: middle;
+      }
 
-			&:focus-visible {
-				outline: 2px solid $primaryGradientRight;
-				outline-offset: 0.3rem;
-			}
-		}
-	}
+      &:focus-visible {
+        outline: 2px solid $primaryGradientRight;
+        outline-offset: 0.3rem;
+      }
+    }
+  }
 }
