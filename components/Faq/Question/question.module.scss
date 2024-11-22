@@ -1,10 +1,8 @@
 .question {
   display: flex;
   flex-direction: column;
-  width: 100%;
   border-bottom: 0.75px solid;
   border-color: $neutralDarker;
-
   position: relative;
 
   &::after {
@@ -61,10 +59,18 @@
   summary {
     display: flex;
     flex-direction: row;
-    width: 100%;
     cursor: pointer;
     list-style: none;
     align-items: center;
+
+    gap: clamp(1rem, calc(2vw / 0.48), 2rem);
+    padding: clamp(0.5rem, calc(1.25vw / 0.48), 1.25rem) clamp(0rem, calc(1vw / 0.48), 1rem) clamp(0.75rem, calc(1.75vw / 0.48), 1.5rem);
+
+    &:focus-visible {
+      outline: 2px solid $primaryGradientRight;
+      outline-offset: clamp(0.25rem, calc(0.5vw / 0.48), 1rem);
+      border-radius: 0.25rem;
+    }
 
     &::-webkit-details-marker {
       display: none;
@@ -72,100 +78,97 @@
 
     .index {
       @include h2FontSize();
-      padding: clamp(1rem, 3vw, 2.5rem) clamp(0.5rem, 2vw, 1.75rem);
       margin: 0;
+      width: clamp(1.25rem, calc(2.5vw / 0.48), 3rem);
       color: $neutralDarker;
     }
-  }
 
-  .title {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    flex: 1;
-    padding: clamp(1rem, 3vw, 2.5rem) clamp(0.5rem, 2vw, 1.75rem) clamp(1rem, 3vw, 2.5rem) 0;
+    .title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      flex: 1;
 
-    h2 {
-      margin: 0;
-      @include h2FontSize();
-      padding-right: 1rem;
-    }
-
-    .button {
-      position: relative;
-      display: block;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      outline: none;
-      border: none;
-      background-color: transparent;
-      width: clamp(1.2rem, 2vw, 2.1rem);
-      height: clamp(1.2rem, 2vw, 2.1rem);
-      padding: 1.5px;
-      background: $primaryGradient;
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-
-      @include reduce-motion {
-        transition: none;
+      h2 {
+        margin: 0;
+        @include h2FontSize();
+        padding-right: 1rem;
       }
 
-      &::after {
-        content: "";
-        position: absolute;
-        inset: 1.5px;
-        border-radius: 50%;
-        background: $black;
+      .button {
+        position: relative;
         display: block;
-      }
-
-      .horizontal,
-      .vertical {
-        position: absolute;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        outline: none;
+        border: none;
+        background-color: transparent;
+        width: clamp(1.25rem, calc(1.25vw / 0.48), 1.5rem);
+        height: clamp(1.25rem, calc(1.25vw / 0.48), 1.5rem);
+        padding: 1.5px;
         background: $primaryGradient;
-        border-radius: 1px;
-        z-index: 2;
         transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
         @include reduce-motion {
           transition: none;
         }
-      }
 
-      .horizontal {
-        width: 50%;
-        height: 1px;
-        left: 25%;
-        top: calc(50% - 0.5px);
-      }
+        &::after {
+          content: "";
+          position: absolute;
+          inset: 1.5px;
+          border-radius: 50%;
+          background: $black;
+          display: block;
+        }
 
-      .vertical {
-        height: 50%;
-        width: 1px;
-        top: 25%;
-        left: calc(50% - 0.5px);
-      }
+        .horizontal,
+        .vertical {
+          position: absolute;
+          background: $primaryGradient;
+          border-radius: 1px;
+          z-index: 2;
+          transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
-      // Add focus styles
-      &:focus-visible {
-        outline: 2px solid $primaryGradientRight;
-        outline-offset: 0.3rem;
+          @include reduce-motion {
+            transition: none;
+          }
+        }
+
+        .horizontal {
+          width: 50%;
+          height: 1px;
+          left: 25%;
+          top: calc(50% - 0.5px);
+        }
+
+        .vertical {
+          height: 50%;
+          width: 1px;
+          top: 25%;
+          left: calc(50% - 0.5px);
+        }
+
+        // Add focus styles
+        &:focus-visible {
+          outline: 2px solid $primaryGradientRight;
+          outline-offset: 0.3rem;
+        }
       }
     }
   }
 
   .content {
-    width: 100%;
-    padding: 0 clamp(0.5rem, 2vw, 1.75rem) clamp(0.75rem, 2vw, 1.25rem);
-    margin-left: auto;
+    padding-left: calc(clamp(1.25rem, calc(2.5vw / 0.48), 3rem) + clamp(0.75rem, calc(2vw / 0.48), 2rem) + clamp(0rem, calc(1vw / 0.48), 1.25rem));
+    padding-bottom: clamp(1rem, calc(1vw / 0.48), 1.5rem);
+    @media (min-width: 1024px) {
+      padding-right: clamp(4rem, calc(8vw / 0.48), 12rem);
+    }
+    margin: 0;
     opacity: 0;
     transform: translateY(-8px);
     transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-
-    p {
-      padding-right: clamp(0.2rem, 1.7vw, 1.75rem);
-      margin: 1rem 0;
-    }
   }
 
   &.visible {

@@ -20,9 +20,10 @@ function FaqQuestion({ index, questionData, isVisible }: { index: number; questi
           </div>
         </div>
       </summary>
-      <div className={styles.content} id={answerId} role="region" aria-labelledby={questionId}>
-        <p>{questionData.answer}</p>
-      </div>
+
+      <p className={styles.content} id={answerId} role="region" aria-labelledby={questionId}>
+        {questionData.answer}
+      </p>
     </details>
   );
 }
